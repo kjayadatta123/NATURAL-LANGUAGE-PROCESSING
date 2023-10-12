@@ -1,0 +1,27 @@
+import spacy
+
+# Load the English language model
+nlp = spacy.load("en_core_web_sm")
+
+# Sample input text
+text = "The quick brown fox jumps over the lazy dog."
+
+# Process the text with spaCy
+doc = nlp(text)
+
+# Generate the parse tree
+parse_tree = []
+for token in doc:
+    parse_tree.append(
+        (
+            token.text,
+            token.dep_,
+            token.head.text,
+            [child.text for child in token.children],
+        )
+    )
+
+# Print the parse tree
+for entry in parse_tree:
+    word, dep, head, children = entry
+    print(f"Word: {word}, Dependency: {dep}, Head: {head}, Children: {children}")
