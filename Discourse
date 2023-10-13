@@ -1,0 +1,20 @@
+import nltk
+from nltk.tree import Tree
+
+
+text = "He wanted to go to the party. However, he had too much work."
+
+
+def discourse_analysis(text):
+    
+    sentences = nltk.sent_tokenize(text)
+    
+    for sentence in sentences:
+        words = nltk.word_tokenize(sentence)
+        
+        for word in words:
+            if word.lower() in ["However", "therefore", "although", "but", "because"]:
+                print(f"Discourse connective: {word}")
+                break
+
+discourse_analysis(text)
